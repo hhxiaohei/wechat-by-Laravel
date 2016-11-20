@@ -21,3 +21,7 @@
 ## 暂未添加微信支付功能
 
 配置文件主要在wechat-by-Laravel/config/wechat.php里
+
+##添加jquery weui前端框架,页面更美观
+
+![](https://raw.githubusercontent.com/hhxiaohei/wechat-by-Laravel/master/1.png)
