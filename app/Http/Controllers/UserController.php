@@ -73,6 +73,6 @@ class UserController extends Controller
      */
     public function logout(){
     	session()->forget('user');
-    	return '<h1>用户退出成功!</h1>';
+    	return view('logout');
     }
 }

@@ -6,50 +6,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 </head>
-<link rel="stylesheet" href="/Home/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Home/lib/weui.min.css">
+<link rel="stylesheet" href="/Home/css/jquery-weui.css">
 <style>
-.goods {
-    margin: 2% 0;
-}
-.goods img {
-    width:90%;
-}
-#navb li {
-    float: left;
-    width: 33%;
-    text-align: center;
-    list-style: none;
-    line-height: 50px;
-}
-body{
-    padding-bottom: 70px;
-}
+    #sub{
+        width: 80%;
+        margin-left:10%;
+        margin-top:2em;
+        position:fixed;
+        bottom:5em;
+    }
 </style>
-<body>
-    <h1>{{$info['goods_name']}}</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 goods">
-                <a href="/goods/1"><img src="/Home/images/goods.jpg" alt=""></a>
-                <p>
-                    {{$info['goods_name']}}
-                    &yen;<span>{{$info['shop_price']}}</span>
-                </p>
-                <p >
-                    <a class="btn btn-primary" href="{{url('buy/'.$info['goods_id'])}}">加入购物车</a>
-                    <a class="btn btn-danger" href="{{url('clear')}}">清空购物车</a>
-                </p>
-            </div>
+<body ontouchstart>
+    <div class="weui_panel weui_panel_access">
+      <div class="weui_panel_bd">
+      <img src="/Home/images/goods.jpg" width="100%">
+        <div class="weui_media_box weui_media_text">
+          <h4 class="weui_media_title">{{$info['goods_name']}}</h4>
+          <p class="weui_media_desc">{{$info['shop_price']}}</p>
         </div>
-        <div class="col-xs-12 navbar-fixed-bottom">
-          <ul class="navbar-fixed-bottom navbar-default row" id="navb">
-            <li><a href="/">首页</a></li>
-            <li><a href="/home">个人中心</a></li>
-            <li><a href="">帮助</a></li>
-          </ul>
-        </div>
-    </div>
+      </div>
+    </div>     
+    <a class="weui_btn weui_btn_primary test" href="{{url('buy/'.$info['goods_id'])}}" id="sub">加入购物车</a>        
+    @include('nav')
 </body>
-<script src="http://libs.useso.co/Home/js/jquery/2.1.0/jquery.min.js"></script>
-<script src="/Home/js/bootstrap.min.js"></script>
 </html>

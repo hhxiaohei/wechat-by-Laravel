@@ -6,6 +6,8 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link rel="stylesheet" href="/Home/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/Home/lib/weui.min.css">
+<link rel="stylesheet" href="/Home/css/jquery-weui.css">
 	<style>
 		.goods {
 		    margin: 2% 0;
@@ -35,15 +37,7 @@
 			{!!csrf_field()!!}
 			<button type="submit" class="btn btn-success">马上支付!</button>
 		</form>
-	
-		
     </div>
-    <div class="col-xs-12 navbar-fixed-bottom">
-          <ul class="navbar-fixed-bottom navbar-default row" id="navb">
-            <li><a href="/">首页</a></li>
-            <li><a href="/home">个人中心</a></li>
-            <li><a href="">帮助</a></li>
-          </ul>
-        </div>
+    @include('nav')
 </body>
 </html>

@@ -27,11 +27,11 @@ class GoodsController extends Controller
 		'5'=>['goods_id'=>'5','goods_name'=>'商品15','shop_price'=>'115'],
 	];
 	##验证是否登陆##
-	protected function checkLogin(){
+	protected function checkLogin($a=null){
 		$req = Request();
 		if(!$req->session()->has('user')){
-    		return redirect('/center');
-    	}
+    		return redirect('center');
+    }
 	}
 	//商城主页
     public function index(Request $req){
@@ -87,8 +87,8 @@ class GoodsController extends Controller
         $order = new Order();
         $user = new User();
         $session = session()->get('user');
-        if(session()->get('user')->getId() == null){
-            redirect('center');
+        if(empty($session)){
+          return redirect('center');
         }
         $myUser = $user->where('openid',$session->getId())->first();
         $order->ordsn = date('Ymd').mt_rand(1,999999);
@@ -137,7 +137,7 @@ class GoodsController extends Controller
           $fee = new Fee();
             $fee->oid = $orderR->ordsn;
             $fee->byid = $orderR->openid;
-            $fee->uid = $myUser->id;##收益的人
+             $fee->uid = $myUser->id;##收益的人
             $fee->money = $orderR->money;
             $fee->save();
       }else{
@@ -153,6 +153,16 @@ class GoodsController extends Controller
              
         }
       }
-      return '支付成功!';
+      return view('payok',['sn'=>$orderR->ordsn,'money'=>$orderR->money]);
+    }
+
+    #个人收益页面
+    public function myMoney(Request $req){
+      $session = session()->get('user');
+      $byid = $session->getId();
+      $myUser = User::where('openid',$byid)->first();
+      $name = $myUser->name;
+      $res = Fee::where('byid',$byid)->get();
+      return view('myMoney',['id'=>$name,'res'=>$res]);
     }
 }

@@ -34,6 +34,9 @@ Route::get('clear','GoodsController@clear');
 Route::any('done','GoodsController@done');
 #订单支付
 Route::any('payok','GoodsController@payok');
+Route::get('paydemo','GoodsController@paydemo');
+#个人收益页面
+Route::get('myMoney','GoodsController@myMoney');
 
 //微博
 Route::get('weibo','WeiboController@index');
